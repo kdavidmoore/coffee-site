@@ -1,0 +1,28 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		title= title
+		link(rel="stylesheet", href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css")
+		link(rel="stylesheet", href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css")
+		link(rel="stylesheet", href="stylesheets/style.css")
+		script(defer, src="javascripts/custom-menu.js")
+	body
+		.custom-wrapper.pure-g#menu
+			.pure-u-1.pure-u-md-1-2
+				.pure-menu
+					a(href="#", class="pure-menu-heading custom-brand")
+						img(src="images/brand.png")
+					a(href="#", class="custom-toggle", id="toggle")
+						s(class="bar")
+						s(class="bar")
+			.pure-u-1.pure-u-md-1-2#right-col
+				.pure-menu.pure-menu-horizontal.custom-menu.custom-can-transform
+					ul(class="pure-menu-list")
+						li(class="pure-menu-item")
+							a(href="#", class="pure-button") Log In
+						li(class="pure-menu-item")
+							a(href="#", class="pure-button") Sign Up
+		block content

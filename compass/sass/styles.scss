@@ -1,0 +1,53 @@
+@import "nav";
+
+/* development */
+
+div {
+	box-sizing: border-box;
+	border: 1px dashed black;
+}
+
+
+/* content */
+
+.section { height: 200px; }
+
+#one {
+	background-color: rgb(237, 235, 230);
+}
+
+#one-two { text-align: center; }
+
+#two {
+	color: #fff;
+	background-color: #000;
+}
+
+#three {
+	background-color: rgb(237, 235, 230);
+	background-position: right;
+}
+
+#four {
+	color: #fff;
+	background-color: #000;
+	background-position: center;
+}
+
+#five {
+	background-color: rgb(237, 235, 230);
+	text-align: center;
+	#top-button { margin-top: 20px; }
+}
+
+.marketing-bs-wrapper { padding-left: 20px; }
+
+.marketing-bs-centered {
+	text-align: right;
+	padding-right: 20px;
+}
+
+.footer {
+	background-color: rgb(191, 191, 191);
+	text-align: center;
+}

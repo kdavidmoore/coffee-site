@@ -1,0 +1,58 @@
+extends layout
+
+block content
+	.content
+		.container
+			.row
+				.col-sm-12.text-center
+					h1= "Tell us what you want"
+					h5= "Shipping is free, and you can skip any week"
+			.row
+				.col-sm-6.text-center.white-panel
+					h1= "Individual Plan"
+					p= "For those who drink alone"
+					img(class="img-responsive", src="images/drinker.jpg")
+					.col-sm-6.text-right
+						h4="Cups per week:  "
+						h4="Price per cup:  "
+						h4="Weekly total:  "
+						h4="Grind type:  "
+					.col-sm-6.text-left
+						h4="  14"
+						h4="  $0.50"
+						h4="  $7.00"
+						select.btn.btn-default(name="grind-type")
+							option(value="espresso") Espresso
+							option(value="aero") Aeropress
+							option(value="drip") Drip
+							option(value="fpress") French press
+					.col-sm-12.text-center
+						form(id="options-form", action="/options", method="post")
+							button(class="btn btn-success btn-lg", type="submit") Submit
+						p(class="add-margin") Shipping is always free.
+						p="Skip any week. Cancel any time."
+				.col-sm-6.text-center.white-panel
+					h1= "Family Plan"
+					p= "For those who drink together"
+					img(class="img-responsive", src="images/drinkers.jpg")
+					.col-sm-6.text-right
+						h4="Cups per week:  "
+						h4="Price per cup:  "
+						h4="Weekly total:  "
+						h4="Grind type:  "
+					.col-sm-6.text-left
+						h4="  40"
+						h4="  $0.45"
+						h4="  $18.00"
+						select.btn.btn-default(name="grind-type")
+							option(value="espresso") Espresso
+							option(value="aero") Aeropress
+							option(value="drip") Drip
+							option(value="fpress") French press
+					.col-sm-12.text-center
+						form(id="options-form", action="/options", method="post")
+							button(class="btn btn-success btn-lg", type="submit") Submit
+						p(class="add-margin") Shipping is always free.
+						p="Skip any week. Cancel any time."
+									
+		

@@ -1,3 +1,5 @@
+@import "vars";
+
 @media (min-width: 500px) {
 	nav {
 		height: 80px;
@@ -24,9 +26,9 @@
 
 .section-small {
 	height: 45px;
-	background-color: rgb(237, 235, 230);
+	background-color: $background-green;
 	h3 {
-		color: rgb(0, 91, 36);
+		color: $coffee-green;
 		position: relative;
 		top: -10px;
 	}
@@ -40,7 +42,7 @@
 }
 
 #three {
-	background-color: rgb(237, 235, 230);
+	background-color: $background-green;
 	background-image: url("../images/grower.jpg");
 	background-position: 0% 0%;
 	background-repeat: no-repeat;
@@ -56,13 +58,12 @@
 
 .section-med {
 	height: 200px;
-	background-color: rgb(237, 235, 230);
-	button { margin: 10px 0; }
+	background-color: $background-green;
 }
 
 footer {
-	background-color: rgb(191, 191, 191);
-	padding: 10px 0;
+	background-color: $footer-grey;
+	padding: 5px 0;
 }
 
 
@@ -73,3 +74,21 @@ footer {
 #registration-form {
 	button { margin-bottom: 10px; }
 }
+
+/* options page */
+.add-margin { margin-top: 10px; }
+
+
+.btn.btn-success {
+	background-color: $coffee-green;
+	border: none;
+}
+.btn.btn-success:hover {
+	background-color: $coffee-green-light;
+}
+.btn.btn-success:active {
+	background-color: $coffee-green;
+}
+
+.content { background-color: $background-green; }
+.white-panel { background-color: #fff; }

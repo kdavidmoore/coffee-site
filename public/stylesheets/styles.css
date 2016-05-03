@@ -1,49 +1,49 @@
 @media (min-width: 500px) {
-  /* line 2, ../../compass/sass/styles.scss */
+  /* line 4, ../../compass/sass/styles.scss */
   nav {
     height: 80px;
   }
-  /* line 4, ../../compass/sass/styles.scss */
+  /* line 6, ../../compass/sass/styles.scss */
   nav img {
     height: 60px;
   }
-  /* line 5, ../../compass/sass/styles.scss */
+  /* line 7, ../../compass/sass/styles.scss */
   nav input {
     margin-top: 10px;
   }
 }
 @media (max-width: 499px) {
-  /* line 11, ../../compass/sass/styles.scss */
+  /* line 13, ../../compass/sass/styles.scss */
   nav img {
     height: 20px;
   }
 }
 /* main content */
-/* line 17, ../../compass/sass/styles.scss */
+/* line 19, ../../compass/sass/styles.scss */
 .section {
   height: 350px;
 }
 
-/* line 19, ../../compass/sass/styles.scss */
+/* line 21, ../../compass/sass/styles.scss */
 #one {
   background-image: url("../images/coffee.jpg");
   background-position: 75% 75%;
   background-repeat: no-repeat;
 }
 
-/* line 25, ../../compass/sass/styles.scss */
+/* line 27, ../../compass/sass/styles.scss */
 .section-small {
   height: 45px;
-  background-color: #edebe6;
+  background-color: #efede9;
 }
-/* line 28, ../../compass/sass/styles.scss */
+/* line 30, ../../compass/sass/styles.scss */
 .section-small h3 {
-  color: #005b24;
+  color: #2c514a;
   position: relative;
   top: -10px;
 }
 
-/* line 35, ../../compass/sass/styles.scss */
+/* line 37, ../../compass/sass/styles.scss */
 #two {
   color: #fff;
   background-image: url("../images/bags.jpg");
@@ -51,15 +51,15 @@
   background-repeat: no-repeat;
 }
 
-/* line 42, ../../compass/sass/styles.scss */
+/* line 44, ../../compass/sass/styles.scss */
 #three {
-  background-color: #edebe6;
+  background-color: #efede9;
   background-image: url("../images/grower.jpg");
   background-position: 0% 0%;
   background-repeat: no-repeat;
 }
 
-/* line 49, ../../compass/sass/styles.scss */
+/* line 51, ../../compass/sass/styles.scss */
 #four {
   color: #fff;
   background-color: #000;
@@ -68,29 +68,57 @@
   background-repeat: no-repeat;
 }
 
-/* line 57, ../../compass/sass/styles.scss */
+/* line 59, ../../compass/sass/styles.scss */
 .section-med {
   height: 200px;
-  background-color: #edebe6;
-}
-/* line 60, ../../compass/sass/styles.scss */
-.section-med button {
-  margin: 10px 0;
+  background-color: #efede9;
 }
 
-/* line 63, ../../compass/sass/styles.scss */
+/* line 64, ../../compass/sass/styles.scss */
 footer {
   background-color: #bfbfbf;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 
 /* registration page */
-/* line 71, ../../compass/sass/styles.scss */
+/* line 72, ../../compass/sass/styles.scss */
 .failure-msg {
   color: red;
 }
 
-/* line 74, ../../compass/sass/styles.scss */
+/* line 75, ../../compass/sass/styles.scss */
 #registration-form button {
   margin-bottom: 10px;
+}
+
+/* options page */
+/* line 79, ../../compass/sass/styles.scss */
+.add-margin {
+  margin-top: 10px;
+}
+
+/* line 82, ../../compass/sass/styles.scss */
+.btn.btn-success {
+  background-color: #2c514a;
+  border: none;
+}
+
+/* line 86, ../../compass/sass/styles.scss */
+.btn.btn-success:hover {
+  background-color: #509386;
+}
+
+/* line 89, ../../compass/sass/styles.scss */
+.btn.btn-success:active {
+  background-color: #2c514a;
+}
+
+/* line 93, ../../compass/sass/styles.scss */
+.content {
+  background-color: #efede9;
+}
+
+/* line 94, ../../compass/sass/styles.scss */
+.white-panel {
+  background-color: #fff;
 }

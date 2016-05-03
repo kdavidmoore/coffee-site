@@ -2,33 +2,45 @@ extends layout
 
 block content
 	.section#one
-		.marketing-bs-wrapper
-			h2= "A better way to grind"
-			p= "Freshly roasted coffee beans delivered"
-			p= "weekly to your door"
-	#one-two
-		h3= "How It Works"
+		.container
+			.row
+				.col-sm-12
+					h2= "A better way to grind"
+					p= "Freshly roasted coffee beans delivered"
+					p= "weekly to your door."
+	.section-small
+		.container
+			.row
+				.col-sm-12.text-center
+					h3= "How It Works"
 	.section#two
-		.marketing-bs-wrapper
-			h3= "1. We get the coffee"
-			p= "Each bean is hand selected"
-			p= "Each bean is measured for precise size"
-			p= "Each bean is tenderly caressed"
+		.container
+			.row
+				.col-sm-12
+					h3= "1. We get the coffee"
+					p= "Each bean is hand selected"
+					p= "Each bean is measured for precise size"
+					p= "Each bean is tenderly caressed"
 	.section#three
-		.marketing-bs-centered
-			h3= "2. We pick up the coffee"
-			p= "We place the coffee in silk bags"
-			p= "Each bag is transported in climate-controlled trucks"
-			p= "Every six hours the bags are rotated for uniformity"
+		.container
+			.row
+				.col-sm-12.text-right
+					h3= "2. We pick up the coffee"
+					p= "We place the coffee in silk bags"
+					p= "Each bag is transported in climate-controlled trucks"
+					p= "Every six hours the bags are rotated for uniformity"
 	.section#four
-		.marketing-bs-wrapper
-			h3= "3. You drink the coffee"
-			p= "The coffee hits your lips"
-			p= "You swallow the coffee"
-			p= "You want to buy more of the coffee"
-	.section#five
-		button.pure-button.pure-button-primary#top-button Get Started
-		p= "Want to know more about us?"
-		button.pure-button Our Story
-	.footer
-		p= "DC Roasters | All Rights Reserved"
+		.container
+			.row
+				.col-sm-12
+					h3= "3. You drink the coffee"
+					p= "The coffee hits your lips"
+					p= "You swallow the coffee"
+					p= "You want to buy more of the coffee"
+	.section-med
+		.container
+			.row
+				.col-sm-12.text-center
+					button.btn.btn-primary#top-button Get Started
+					p= "Want to know more about us?"
+					button.btn.btn-default Our Story

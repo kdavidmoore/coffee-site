@@ -1,53 +1,68 @@
-@import "nav";
-
-/* development */
-
-div {
-	box-sizing: border-box;
-	border: 1px dashed black;
+nav {
+	height: 80px;
+	img { height: 60px; }
+	ul {
+		position: relative;
+		top: 20px;
+		right: -100px;
+		li { margin-right: 10px; }
+	}
 }
+/* main content */
 
-
-/* content */
-
-.section { height: 200px; }
+.section { height: 350px; }
 
 #one {
-	background-color: rgb(237, 235, 230);
+	background-image: url("../images/coffee.jpg");
+	background-position: 0% 0%;
+	background-repeat: no-repeat;
 }
 
-#one-two { text-align: center; }
+.section-small {
+	height: 45px;
+	background-color: rgb(237, 235, 230);
+	h3 {
+		color: rgb(0, 91, 36);
+		position: relative;
+		top: -10px;
+	}
+}
 
 #two {
 	color: #fff;
-	background-color: #000;
+	background-image: url("../images/bags.jpg");
+	background-position: 25% 25%;
+	background-repeat: no-repeat;
 }
 
 #three {
 	background-color: rgb(237, 235, 230);
-	background-position: right;
+	background-image: url("../images/grower.jpg");
+	background-position: 0% 0%;
+	background-repeat: no-repeat;
 }
 
 #four {
 	color: #fff;
 	background-color: #000;
-	background-position: center;
+	background-image: url("../images/steaming.jpg");
+	background-position: 75% 0%;
+	background-repeat: no-repeat;
 }
 
-#five {
+.section-med {
+	height: 200px;
 	background-color: rgb(237, 235, 230);
-	text-align: center;
-	#top-button { margin-top: 20px; }
+	button { margin: 10px 0; }
 }
 
-.marketing-bs-wrapper { padding-left: 20px; }
-
-.marketing-bs-centered {
-	text-align: right;
-	padding-right: 20px;
-}
-
-.footer {
+footer {
 	background-color: rgb(191, 191, 191);
-	text-align: center;
+	padding: 10px 0;
 }
+
+
+/* registration page */
+
+.failure-msg { color: red; }
+

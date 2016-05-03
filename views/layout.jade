@@ -4,7 +4,7 @@ html
 		meta(charset="utf-8")
 		meta(http-equiv="X-UA-Compatible", content="IE=edge")
 		meta(name="viewport", content="width=device-width, initial-scale=1")
-		title= title
+		title= "DC Roasters"
 		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
 		link(rel="stylesheet", href="stylesheets/styles.css")
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js")
@@ -17,17 +17,15 @@ html
 						span(class="sr-only") Toggle navigation
 						span(class="icon-bar")
 						span(class="icon-bar")
-						span(class="icon-bar")
 					a(class="navbar-brand", href="#")
 						img(src="images/brand.png")
 				div(class="collapse navbar-collapse", id="navbar-collapse-1")
-					ul(class="nav navbar-nav")
-						li
-							form(class="new-user", action="/register", method="get")
-								input(class="btn btn-default", type="submit", value="Log In")
-						li
-							form(class="new-user", action="/register", method="get")
-								input(class="btn btn-default", type="submit", value="Sign Up")
+					form(class="navbar-form navbar-right", action="/register", method="get")
+						.form-group
+							input(class="btn btn-default form-control", type="submit", value="Log In")
+					form(class="navbar-form navbar-right", action="/register", method="get")
+						.form-group
+							input(class="btn btn-default form-control", type="submit", value="Sign Up")
 		block content
 		footer(class="text-center")
 			p= "DC Roasters | All Rights Reserved"

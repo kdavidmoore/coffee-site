@@ -1,20 +1,24 @@
-nav {
-	height: 80px;
-	img { height: 60px; }
-	ul {
-		position: relative;
-		top: 20px;
-		right: -100px;
-		li { margin-right: 10px; }
+@media (min-width: 500px) {
+	nav {
+		height: 80px;
+		img { height: 60px; }
+		input { margin-top: 10px; }
 	}
 }
+
+@media (max-width: 499px) {
+	nav {
+		img { height: 20px; }
+	}
+}
+
 /* main content */
 
 .section { height: 350px; }
 
 #one {
 	background-image: url("../images/coffee.jpg");
-	background-position: 0% 0%;
+	background-position: 75% 75%;
 	background-repeat: no-repeat;
 }
 

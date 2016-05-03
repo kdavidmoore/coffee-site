@@ -19,17 +19,17 @@ router.get('/register', function(req, res, next){
 router.post('/register', function(req, res, next){
 	if (req.body.password !== req.body.password2){
 		res.redirect('/register?failure=password');
+	} else {
+		var newAccount = new Account({
+			username: req.body.username,
+			password: req.body.password,
+			emailAddress: req.body.email
+		});
+
+		console.log(newAccount);
+		newAccount.save();
+		res.json(req.body);
 	}
-
-	var newAccount = new Account({
-		username: req.body.username,
-		password: req.body.password,
-		emailAddress: req.body.email
-	});
-
-	console.log(newAccount);
-	newAccount.save();
-	res.json(req.body);
 });
 
 module.exports = router;

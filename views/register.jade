@@ -5,11 +5,11 @@ block content
 		.row
 			.col-sm-12
 				h1= "Registration"
-				p= "Choose a username and password"
+				h5= "Choose a username and password"
 		.row
 			if(failure)
-				.failure-msg
-					p= "The passwords do not match."
+				.failure-msg.text-center
+					h5= "The passwords do not match."
 			.col-sm-12.text-center
 				form(class="form-horizontal", role="form", action="/register", method="post", id="registration-form")
 					.form-group

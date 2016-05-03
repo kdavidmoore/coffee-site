@@ -88,3 +88,8 @@ footer {
 .failure-msg {
   color: red;
 }
+
+/* line 70, ../../compass/sass/styles.scss */
+#registration-form button {
+  margin-bottom: 10px;
+}

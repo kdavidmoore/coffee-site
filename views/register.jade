@@ -10,21 +10,22 @@ block content
 			if(failure)
 				.failure-msg
 					p= "The passwords do not match."
-			.col-sm-6.text-center
+			.col-sm-12.text-center
 				form(class="form-horizontal", role="form", action="/register", method="post", id="registration-form")
 					.form-group
-						label(for="unField" class="col-sm-2 control-label") Username:
-						.col-sm-10
+						label(for="unField" class="col-sm-4 control-label") Username:
+						.col-sm-4
 							input.form-control(type="text", id="unField", name="username", placeholder="Your name", minlength="4", maxlength="50")
 					.form-group
-						label(for="pwField" class="col-sm-2 control-label") Password:
-						.col-sm-10
+						label(for="pwField" class="col-sm-4 control-label") Password:
+						.col-sm-4
 							input.form-control(type="password", id="pwField", name="password", placeholder="Choose a password", minlength="4", maxlength="20")
 					.form-group
-						label(for="pwField2" class="col-sm-2 control-label")
-						.col-sm-10
+						label(for="pwField2" class="col-sm-4 control-label")
+						.col-sm-4
 							input.form-control(type="password", id="pwField2", name="password2", placeholder="Repeat the password", minlength="4", maxlength="20")
 					.form-group
-						label(for="emailField" class="col-sm-2 control-label") Email:
-						.col-sm-10
+						label(for="emailField" class="col-sm-4 control-label") Email:
+						.col-sm-4
 							input.form-control(type="email", id="emailField", name="email", placeholder="Your email address", minlength="4", maxlength="50")
+					button.btn.btn-primary(type="submit") Submit

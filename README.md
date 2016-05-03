@@ -1,10 +1,10 @@
 # Coffee Site
 
-Wireframe for a marketing site using Express, Node.js, Jade, and Pure.css.
+Wireframe for a marketing site using Express, Node.js, Jade, and Bootstrap.
 
 ## Features
-* All the features
+* View marketing page
+* Register as a new user
 
 ## TODO
-* Finish layout
 * Add AngularJS front-end

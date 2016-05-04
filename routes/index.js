@@ -24,7 +24,7 @@ router.post('/register', function(req, res, next){
 		console.log(newAccount);
 		newAccount.save();
 		req.session.username = req.body.username;
-		res.json({ sucess: 'added' });
+		res.json({ success: 'added' });
 	}
 });
 
@@ -34,7 +34,7 @@ router.post('/login', function(req, res, next){
 	Account.findOne(
 		{ username: req.body.username },
 		function (err, doc){
-			if(doc==null){
+			if(doc == null){
 				res.json({ failure: 'noUser'});
 			} else {
 				// doc is the document returned from our Mongo query; it has a property for each field.

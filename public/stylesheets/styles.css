@@ -86,39 +86,71 @@ footer {
   color: red;
 }
 
-/* line 75, ../../compass/sass/styles.scss */
-#registration-form button {
+/* line 74, ../../compass/sass/styles.scss */
+.button-holder {
   margin-bottom: 10px;
 }
 
 /* options page */
-/* line 79, ../../compass/sass/styles.scss */
+/* line 77, ../../compass/sass/styles.scss */
 .add-margin {
   margin-top: 10px;
 }
 
-/* line 82, ../../compass/sass/styles.scss */
+/* line 80, ../../compass/sass/styles.scss */
 .btn.btn-success {
   background-color: #2c514a;
   border: none;
 }
 
-/* line 86, ../../compass/sass/styles.scss */
+/* line 84, ../../compass/sass/styles.scss */
 .btn.btn-success:hover {
   background-color: #509386;
 }
 
-/* line 89, ../../compass/sass/styles.scss */
+/* line 87, ../../compass/sass/styles.scss */
 .btn.btn-success:active {
   background-color: #2c514a;
 }
 
-/* line 93, ../../compass/sass/styles.scss */
+/* line 91, ../../compass/sass/styles.scss */
 .content {
   background-color: #efede9;
 }
 
-/* line 94, ../../compass/sass/styles.scss */
+/* line 92, ../../compass/sass/styles.scss */
 .white-panel {
   background-color: #fff;
+}
+
+/* second header */
+/* line 95, ../../compass/sass/styles.scss */
+.grey-header {
+  background-color: #7e7e7e;
+}
+/* line 96, ../../compass/sass/styles.scss */
+.grey-header .col-sm-2 > * {
+  margin: 0;
+  padding: 0;
+}
+/* line 101, ../../compass/sass/styles.scss */
+.grey-header .menu-text {
+  text-transform: uppercase;
+  color: #a6a6a6;
+  height: 25px;
+}
+/* line 106, ../../compass/sass/styles.scss */
+.grey-header .active {
+  color: white;
+}
+/* line 107, ../../compass/sass/styles.scss */
+.grey-header .menu-img {
+  height: 35px;
+  background-repeat: no-repeat;
+  background-position: 25% 0%;
+  transform: scale(0.5, 0.5);
+}
+/* line 113, ../../compass/sass/styles.scss */
+.grey-header .step-one {
+  background-image: url("../images/menu.png");
 }

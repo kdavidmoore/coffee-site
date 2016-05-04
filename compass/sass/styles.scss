@@ -71,9 +71,7 @@ footer {
 
 .failure-msg { color: red; }
 
-#registration-form {
-	button { margin-bottom: 10px; }
-}
+.button-holder { margin-bottom: 10px; }
 
 /* options page */
 .add-margin { margin-top: 10px; }
@@ -92,3 +90,28 @@ footer {
 
 .content { background-color: $background-green; }
 .white-panel { background-color: #fff; }
+
+/* second header */
+.grey-header {
+	.col-sm-2 > * {
+		margin: 0;
+		padding: 0;
+	}
+	background-color: $header-grey;
+	.menu-text {
+		text-transform: uppercase;
+		color: $header-inactive;
+		height: 25px;
+	}
+	.active { color: white; }
+	.menu-img {
+		height: 35px;
+		background-repeat: no-repeat;
+		background-position: 25% 0%;
+		transform: scale(0.5, 0.5);
+	}
+	.step-one {	background-image: url("../images/menu.png"); }
+	.step-two { }
+	.step-three { }
+	.step-four { }
+}

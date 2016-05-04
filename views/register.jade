@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	.container
+	.container-fluid
 		.row
 			.col-sm-12
 				h1= "Registration"
@@ -28,4 +28,5 @@ block content
 						label(for="emailField" class="col-sm-4 control-label") Email:
 						.col-sm-4
 							input.form-control(type="email", id="emailField", name="email", placeholder="Your email address", minlength="4", maxlength="50")
-					button.btn.btn-primary(type="submit") Submit
+					.button-holder
+						button.btn.btn-primary(type="submit") Submit

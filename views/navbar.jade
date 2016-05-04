@@ -1,0 +1,34 @@
+nav(class="nav navbar-inverse")
+	div(class="container-fluid")
+		div(class="navbar-header")
+			button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target="#navbar-collapse-1", aria-expanded="false")
+				span(class="sr-only") Toggle navigation
+				span(class="icon-bar")
+				span(class="icon-bar")
+			a(class="navbar-brand", href="#")
+				img(src="images/brand.png")
+		div(class="collapse navbar-collapse", id="navbar-collapse-1")
+			form(class="navbar-form navbar-right", action="/login", method="get")
+				.form-group
+					input(class="btn btn-default form-control", type="submit", value="Log In")
+			form(class="navbar-form navbar-right", action="/register", method="get")
+				.form-group
+					input(class="btn btn-default form-control", type="submit", value="Sign Up")
+if page == 'options'
+	.grey-header
+		.row
+			.col-sm-2.col-sm-offset-2
+				.row
+					.col-sm-4
+						.menu-img.step-one
+					.col-sm-8
+						p(class="menu-text") 1. Home
+			.col-sm-2
+				.menu-img.step-two
+				p(class="menu-text active") 2. Options
+			.col-sm-2
+				.menu-img.step-three
+				p(class="menu-text") 3. Delivery
+			.col-sm-2
+				.menu-img.step-four
+				p(class="menu-text") 4. Payment

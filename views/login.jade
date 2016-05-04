@@ -1,0 +1,21 @@
+extends layout
+
+block content
+	.container-fluid
+		.row
+			.col-sm-12
+				h1= "Log In"
+				h5= "Enter your username and password below"
+		.row
+			.col-sm-12.text-center
+				form(class="form-horizontal", role="form", action="/login", method="post", id="login-form")
+					.form-group
+						label(for="unField" class="col-sm-4 control-label") Username:
+						.col-sm-4
+							input.form-control(type="text", id="unField", name="username", placeholder="Your username", minlength="5", maxlength="20")
+					.form-group
+						label(for="pwField" class="col-sm-4 control-label") Password:
+						.col-sm-4
+							input.form-control(type="password", id="pwField", name="password", placeholder="Your password", minlength="6", maxlength="20")
+					.button-holder
+						button.btn.btn-success(type="submit") Submit

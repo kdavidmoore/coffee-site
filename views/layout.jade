@@ -10,22 +10,6 @@ html
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js")
 		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
 	body
-		nav(class="nav navbar-inverse")
-			div(class="container-fluid")
-				div(class="navbar-header")
-					button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target="#navbar-collapse-1", aria-expanded="false")
-						span(class="sr-only") Toggle navigation
-						span(class="icon-bar")
-						span(class="icon-bar")
-					a(class="navbar-brand", href="#")
-						img(src="images/brand.png")
-				div(class="collapse navbar-collapse", id="navbar-collapse-1")
-					form(class="navbar-form navbar-right", action="/register", method="get")
-						.form-group
-							input(class="btn btn-default form-control", type="submit", value="Log In")
-					form(class="navbar-form navbar-right", action="/register", method="get")
-						.form-group
-							input(class="btn btn-default form-control", type="submit", value="Sign Up")
+		include navbar
 		block content
-		footer(class="text-center")
-			p= "DC Roasters | All Rights Reserved"
+		include footer

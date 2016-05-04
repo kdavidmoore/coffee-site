@@ -15,7 +15,10 @@ router.get('/', function(req, res, next){
 
 /* get route for register page */
 router.get('/register', function(req, res, next){
-	res.render('register', { failure: req.query.failure });
+	res.render('register', { 
+		page: 'register',
+		failure: req.query.failure
+	});
 });
 
 /* post route for register page */
@@ -40,7 +43,39 @@ router.post('/register', function(req, res, next){
 
 /* get route for options page */
 router.get('/options', function(req, res, next){
-	res.render('options', { username: req.session.username });
+	if(!req.session.username){
+		res.redirect('/login');
+	} else {
+		res.render('options', {
+			page: 'options',
+			username: req.session.username
+		});
+	}
+});
+
+/* get route for the login page */
+router.get('/login', function(req, res, next){
+	res.render('login', { page: 'login' });
+});
+
+/* post route for the login page */
+router.post('/login', function(req, res, next){
+
+	Account.findOne(
+		{ username: req.body.username },
+		function (err, doc){
+			//doc is the document returned from our Mongo query. It has a property for each field.
+			// we need to check the password in the db (doc.password) against the submitted password through bcrypt
+			var loginResult = bcrypt.compareSync(req.body.password, doc.password);
+			if(loginResult){
+				// hashes matched; set up req.session.username and move them on
+				req.session.username = req.body.username;
+				res.redirect('/options');
+			}else{
+				// hashes did not match or doc not found; redirect to login
+				res.redirect('/login?failure=password')
+			}
+	});
 });
 
 module.exports = router;

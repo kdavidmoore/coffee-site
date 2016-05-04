@@ -64,8 +64,8 @@ router.post('/login', function(req, res, next){
 	Account.findOne(
 		{ username: req.body.username },
 		function (err, doc){
-			//doc is the document returned from our Mongo query. It has a property for each field.
-			// we need to check the password in the db (doc.password) against the submitted password through bcrypt
+			// doc is the document returned from our Mongo query; it has a property for each field.
+			// check the password in the db (doc.password) against the submitted password
 			var loginResult = bcrypt.compareSync(req.body.password, doc.password);
 			if(loginResult){
 				// hashes matched; set up req.session.username and move them on

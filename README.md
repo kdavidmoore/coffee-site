@@ -1,6 +1,6 @@
 # Coffee Site
 
-Wireframe for a marketing site built using Express. Uses Jade templating engine for Node.js, and also uses Bootstrap for navbar and styling.
+Wireframe for a marketing site built using Express. Uses Jade templating engine, and also uses Bootstrap for navbar and styling.
 
 ## Features
 * View marketing page

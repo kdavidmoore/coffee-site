@@ -8,23 +8,10 @@ var bcrypt = require('bcrypt-nodejs');
 
 mongoose.connect(mongoUrl);
 
-/* get route for the home page */
-router.get('/', function(req, res, next){
-	res.render('index', {});
-});
-
-/* get route for register page */
-router.get('/register', function(req, res, next){
-	res.render('register', { 
-		page: 'register',
-		failure: req.query.failure
-	});
-});
-
 /* post route for register page */
 router.post('/register', function(req, res, next){
 	if (req.body.password !== req.body.password2){
-		res.redirect('/register?failure=password');
+		res.send({ failure: 'passwordMatch' });
 	} else {
 		var salt = bcrypt.genSaltSync(10);
 
@@ -37,25 +24,8 @@ router.post('/register', function(req, res, next){
 		console.log(newAccount);
 		newAccount.save();
 		req.session.username = req.body.username;
-		res.redirect('/options');
+		res.json({ sucess: 'added' });
 	}
-});
-
-/* get route for options page */
-router.get('/options', function(req, res, next){
-	if(!req.session.username){
-		res.redirect('/login');
-	} else {
-		res.render('options', {
-			page: 'options',
-			username: req.session.username
-		});
-	}
-});
-
-/* get route for the login page */
-router.get('/login', function(req, res, next){
-	res.render('login', { page: 'login' });
 });
 
 /* post route for the login page */
@@ -64,16 +34,20 @@ router.post('/login', function(req, res, next){
 	Account.findOne(
 		{ username: req.body.username },
 		function (err, doc){
-			// doc is the document returned from our Mongo query; it has a property for each field.
-			// check the password in the db (doc.password) against the submitted password
-			var loginResult = bcrypt.compareSync(req.body.password, doc.password);
-			if(loginResult){
-				// hashes matched; set up req.session.username and move them on
-				req.session.username = req.body.username;
-				res.redirect('/options');
-			}else{
-				// hashes did not match or doc not found; redirect to login
-				res.redirect('/login?failure=password')
+			if(doc==null){
+				res.json({ failure: 'noUser'});
+			} else {
+				// doc is the document returned from our Mongo query; it has a property for each field.
+				// check the password in the db (doc.password) against the submitted password
+				var loginResult = bcrypt.compareSync(req.body.password, doc.password);
+				if(loginResult){
+					// hashes matched
+					req.session.username = req.body.username;
+					res.json({ success: 'match' });
+				}else{
+					// hashes did not match or doc not found
+					res.json({ failure: 'noMatch' });
+				}
 			}
 	});
 });

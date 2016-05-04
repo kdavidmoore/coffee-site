@@ -1,10 +1,15 @@
 # Coffee Site
 
-Wireframe for a marketing site using Express, Node.js, Jade, and Bootstrap.
+Wireframe for a marketing site built using Express. Uses Jade templating engine for Node.js, and also uses Bootstrap for navbar and styling.
 
 ## Features
 * View marketing page
 * Register as a new user
+* Securely store and retrieve hashed password
+* Log in with username and password
+* Choose service options (in progress)
 
-## TODO
-* Add AngularJS front-end
+## Demo here
+link to portfolio
+
+[I learned this at DigitalCrafts](https://digitalcrafts.com)

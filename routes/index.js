@@ -4,27 +4,35 @@ var mongoUrl = 'mongodb://localhost:27017/coffee';
 var mongoose = require('mongoose');
 var Account = require('../models/accounts');
 var bcrypt = require('bcrypt-nodejs');
-//var session = require('express-session');
-
+var randtoken = require('rand-token');
+// create a token generator using the default settings
 mongoose.connect(mongoUrl);
 
 /* post route for register page */
 router.post('/register', function(req, res, next){
+	
+
 	if (req.body.password !== req.body.password2){
 		res.send({ failure: 'passwordMatch' });
 	} else {
 		var salt = bcrypt.genSaltSync(10);
+		var token = randtoken.generate(32);
 
 		var newAccount = new Account({
 			username: req.body.username,
 			password: bcrypt.hashSync(req.body.password, salt),
-			emailAddress: req.body.email
+			emailAddress: req.body.email,
+			token: token
 		});
 		
 		console.log(newAccount);
 		newAccount.save();
-		req.session.username = req.body.username;
-		res.json({ success: 'added' });
+		//req.session.username = req.body.username;
+
+		res.json({
+			success: 'added',
+			token: token
+		});
 	}
 });
 
@@ -42,12 +50,33 @@ router.post('/login', function(req, res, next){
 				var loginResult = bcrypt.compareSync(req.body.password, doc.password);
 				if(loginResult){
 					// hashes matched
-					req.session.username = req.body.username;
-					res.json({ success: 'match' });
+					//req.session.username = req.body.username;
+
+					res.json({
+						success: 'match',
+						token: doc.token
+					});
 				}else{
 					// hashes did not match or doc not found
 					res.json({ failure: 'noMatch' });
 				}
+			}
+	});
+});
+
+/* post route for options page */
+router.post('/options', function(req, res, next){
+
+	Account.findOne(
+		{ token: req.body.token },
+		function (err, doc){
+			if(doc == null){
+				res.json({ failure: 'noToken'});
+			} else {
+				res.json({
+					success: 'tokenMatch',
+					token: doc.token
+				});
 			}
 	});
 });

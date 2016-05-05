@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoUrl = 'mongodb://localhost:27017/coffee';
 var mongoose = require('mongoose');
 var Account = require('../models/accounts');
+var Order = require('../models/orders');
 var bcrypt = require('bcrypt-nodejs');
 var randtoken = require('rand-token');
 // create a token generator using the default settings

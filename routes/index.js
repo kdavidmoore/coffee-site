@@ -8,10 +8,29 @@ var randtoken = require('rand-token');
 // create a token generator using the default settings
 mongoose.connect(mongoUrl);
 
+
+/* check for token */
+router.get('/getUserData', function(req, res, next){
+	// on page load (options, etc.) check for a token
+	if(req.query.token == undefined){
+		res.json({ failure: 'noToken' });
+	} else {
+		Account.findOne({
+			token: req.query.token
+		}, function(err, doc){
+			if (doc == null){
+				res.json({ failure: 'badToken' });
+			} else {
+				res.json(doc);
+			}
+		});
+	}
+});
+
+
 /* post route for register page */
 router.post('/register', function(req, res, next){
 	
-
 	if (req.body.password !== req.body.password2){
 		res.send({ failure: 'passwordMatch' });
 	} else {
@@ -35,6 +54,7 @@ router.post('/register', function(req, res, next){
 		});
 	}
 });
+
 
 /* post route for the login page */
 router.post('/login', function(req, res, next){
@@ -64,6 +84,7 @@ router.post('/login', function(req, res, next){
 	});
 });
 
+
 /* post route for options page */
 router.post('/options', function(req, res, next){
 
@@ -71,7 +92,7 @@ router.post('/options', function(req, res, next){
 		{ token: req.body.token },
 		function (err, doc){
 			if(doc == null){
-				res.json({ failure: 'noToken'});
+				res.json({ failure: 'badToken'});
 			} else {
 				res.json({
 					success: 'tokenMatch',
@@ -80,5 +101,58 @@ router.post('/options', function(req, res, next){
 			}
 	});
 });
+
+
+/* post route for delivery page */
+router.post('/delivery', function(req, res, next){
+
+	Account.findOne(
+		{ token: req.body.token },
+		function (err, doc){
+			if(doc == null){
+				res.json({ failure: 'badToken'});
+			} else {
+				res.json({
+					success: 'tokenMatch',
+					token: doc.token
+				});
+			}
+	});	
+});
+
+
+router.post('/checkout', function(req, res, next){
+	
+	Order.findOneAndUpdate(
+		{
+			token: $cookies.get('token')
+		},
+		{
+			frequency: $cookies.get('frequency'),
+			quantity: $cookies.get('quantity'),
+			grindType: $cookies.get('grindType'),
+			fullname: $cookies.get('fullname'),
+			addressOne: $cookies.get('addressOne'),
+			addressTwo: $cookies.get('addressTwo'),
+			city: $cookies.get('city'),
+			state: $cookies.get('state'),
+			zip: $cookies.get('zip'),
+			deliveryDate: $cookies.get('deliveryDate')
+		},
+		{
+			upsert: true
+		},
+		function (err, doc){
+			if (doc == null){
+				res.json({ failure: 'badToken' });
+			} else {
+				// found a document and updated it or created one
+				// now save the document in the database
+				doc.save();
+				res.json({ success: 'updated' });
+			}
+	});
+});
+
 
 module.exports = router;

@@ -32,28 +32,32 @@ router.get('/getUserData', function(req, res, next){
 /* post route for register page */
 router.post('/register', function(req, res, next){
 	
-	if (req.body.password !== req.body.password2){
-		res.send({ failure: 'passwordMatch' });
-	} else {
-		var salt = bcrypt.genSaltSync(10);
-		var token = randtoken.generate(32);
+	// TODO: add logic to make sure username is unique
+	Account.findOne({
+		username: req.body.username
+	}, function(err, doc){
+		if (doc == null){
+			var salt = bcrypt.genSaltSync(10);
+			var token = randtoken.generate(32);
 
-		var newAccount = new Account({
-			username: req.body.username,
-			password: bcrypt.hashSync(req.body.password, salt),
-			emailAddress: req.body.email,
-			token: token
-		});
-		
-		console.log(newAccount);
-		newAccount.save();
-		//req.session.username = req.body.username;
+			var newAccount = new Account({
+				username: req.body.username,
+				password: bcrypt.hashSync(req.body.password, salt),
+				emailAddress: req.body.email,
+				token: token
+			});
+			
+			console.log(newAccount);
+			newAccount.save();
 
-		res.json({
-			success: 'added',
-			token: token
-		});
-	}
+			res.json({
+				success: 'added',
+				token: token
+			});
+		} else {
+			res.json({ failure: 'notUnique' });
+		}
+	});
 });
 
 
@@ -71,8 +75,6 @@ router.post('/login', function(req, res, next){
 				var loginResult = bcrypt.compareSync(req.body.password, doc.password);
 				if(loginResult){
 					// hashes matched
-					//req.session.username = req.body.username;
-
 					res.json({
 						success: 'match',
 						token: doc.token

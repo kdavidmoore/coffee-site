@@ -15,7 +15,8 @@ var Account = new Schema({
 	city: String,
 	state: String,
 	zip: Number,
-	deliveryDate: Date
+	deliveryDate: Date,
+	totalCost: Number
 });
 
 module.exports = mongoose.model('Account', Account);

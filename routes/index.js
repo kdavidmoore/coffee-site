@@ -138,7 +138,8 @@ router.post('/checkout', function(req, res, next){
 			city: req.body.city,
 			state: req.body.state,
 			zip: req.body.zip,
-			deliveryDate: req.body.deliveryDate
+			deliveryDate: req.body.deliveryDate,
+			totalCost: req.body.totalCost
 		},
 		{
 			upsert: true

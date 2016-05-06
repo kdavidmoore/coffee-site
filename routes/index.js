@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoUrl = 'mongodb://localhost:27017/coffee';
 var mongoose = require('mongoose');
 var Account = require('../models/accounts');
-var Order = require('../models/orders');
+//var Order = require('../models/orders');
 var bcrypt = require('bcrypt-nodejs');
 var randtoken = require('rand-token');
 // create a token generator using the default settings
@@ -124,21 +124,21 @@ router.post('/delivery', function(req, res, next){
 
 router.post('/checkout', function(req, res, next){
 	
-	Order.findOneAndUpdate(
+	Account.findOneAndUpdate(
 		{
-			token: $cookies.get('token')
+			token: req.body.token
 		},
 		{
-			frequency: $cookies.get('frequency'),
-			quantity: $cookies.get('quantity'),
-			grindType: $cookies.get('grindType'),
-			fullname: $cookies.get('fullname'),
-			addressOne: $cookies.get('addressOne'),
-			addressTwo: $cookies.get('addressTwo'),
-			city: $cookies.get('city'),
-			state: $cookies.get('state'),
-			zip: $cookies.get('zip'),
-			deliveryDate: $cookies.get('deliveryDate')
+			frequency: req.body.frequency,
+			quantity: req.body.quantity,
+			grindType: req.body.grindType,
+			fullname: req.body.fullname,
+			addressOne: req.body.addressOne,
+			addressTwo: req.body.addressTwo,
+			city: req.body.city,
+			state: req.body.state,
+			zip: req.body.zip,
+			deliveryDate: req.body.deliveryDate
 		},
 		{
 			upsert: true

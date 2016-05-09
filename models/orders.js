@@ -12,7 +12,8 @@ var Order = new Schema({
 	city: String,
 	state: String,
 	zip: Number,
-	deliveryDate: Date
+	deliveryDate: Date,
+	totalCost: Number
 });
 
 module.exports = mongoose.model('Order', Order);

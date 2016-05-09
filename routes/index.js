@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var mongoUrl = 'mongodb://localhost:27017/coffee';
+const mongoUrl = 'mongodb://localhost:27017/coffee';
 var mongoose = require('mongoose');
 var Account = require('../models/accounts');
-//var Order = require('../models/orders');
+var Order = require('../models/orders');
 var bcrypt = require('bcrypt-nodejs');
 var randtoken = require('rand-token');
-// create a token generator using the default settings
+var stripe = require("stripe")(
+  "pk_test_S1PLtt6vW1RchhitC9359CNc"
+);
 mongoose.connect(mongoUrl);
 
 
@@ -32,7 +34,6 @@ router.get('/getUserData', function(req, res, next){
 /* post route for register page */
 router.post('/register', function(req, res, next){
 	
-	// TODO: add logic to make sure username is unique
 	Account.findOne({
 		username: req.body.username
 	}, function(err, doc){
@@ -124,9 +125,40 @@ router.post('/delivery', function(req, res, next){
 });
 
 
-router.post('/checkout', function(req, res, next){
+router.post('/payment', function(req, res, next){
 	
-	Account.findOneAndUpdate(
+	// stripe requires HTTPS so we're going to use some dummy code for now
+
+	// stripe.charges.create({
+	// 	amount: req.body.stripeAmount, // obtained with hidden input field
+	// 	currency: 'usd',
+	// 	source: req.body.stripeToken, // obtained with stripe
+	// 	description: "Charge for " + req.body.stripeEmail // obtained with hidden input field
+	// }, function(err, charge) {
+	// 	if (err && err.type === 'StripeCardError') {
+	// 		res.json({failure: 'declined'});
+ // 	 	} else {
+ // 			res.json({success: 'paid'});
+ // 			}
+	// });
+	
+	Account.findOne(
+		{ token: req.body.token },
+		function (err, doc){
+			if(doc == null){
+				res.json({ failure: 'badToken'});
+			} else {
+				res.json({
+					success: 'paid'
+				});
+			}
+	});
+});
+
+
+router.post('/checkout', function(req, res, next){
+
+	Order.findOneAndUpdate(
 		{
 			token: req.body.token
 		},
@@ -147,8 +179,8 @@ router.post('/checkout', function(req, res, next){
 			upsert: true
 		},
 		function (err, doc){
-			if (doc == null){
-				res.json({ failure: 'badToken' });
+			if (err){
+				res.json({ failure: 'notUpdated' });
 			} else {
 				// found a document and updated it or created one
 				// now save the document in the database

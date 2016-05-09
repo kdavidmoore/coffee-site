@@ -137,20 +137,19 @@ router.post('/payment', function(req, res, next){
 	// }, function(err, charge) {
 	// 	if (err && err.type === 'StripeCardError') {
 	// 		res.json({failure: 'declined'});
- // 	 	} else {
- // 			res.json({success: 'paid'});
- // 			}
+ 	//  	} else {
+ 	// 		res.json({success: 'paid'});
+ 	// 		}
 	// });
 	
 	Account.findOne(
-		{ token: req.body.token },
-		function (err, doc){
+		{
+			token: req.body.token
+		}, function (err, doc){
 			if(doc == null){
 				res.json({ failure: 'badToken'});
 			} else {
-				res.json({
-					success: 'paid'
-				});
+				res.json({ success: 'paid' });
 			}
 	});
 });
@@ -158,34 +157,48 @@ router.post('/payment', function(req, res, next){
 
 router.post('/checkout', function(req, res, next){
 
-	Order.findOneAndUpdate(
+	Account.findOne(
+	{
+		token: req.body.token
+	}, function (err, doc){
+		if(doc == null){
+			res.json({ failure: 'badToken'});
+		} else {
+			
+			var newOrder = new Order({
+				token: req.body.token,
+				frequency: req.body.frequency,
+				quantity: req.body.quantity,
+				grindType: req.body.grindType,
+				fullname: req.body.fullname,
+				addressOne: req.body.addressOne,
+				addressTwo: req.body.addressTwo,
+				city: req.body.city,
+				state: req.body.state,
+				zip: req.body.zip,
+				deliveryDate: req.body.deliveryDate,
+				totalCost: req.body.totalCost
+			});
+
+			console.log(newOrder);
+			newOrder.save();
+
+			res.json({ success: 'added' });
+		}
+	});
+});
+
+
+router.post('/cancel', function(req, res, next){
+
+	Account.findOneAndRemove(
 		{
 			token: req.body.token
-		},
-		{
-			frequency: req.body.frequency,
-			quantity: req.body.quantity,
-			grindType: req.body.grindType,
-			fullname: req.body.fullname,
-			addressOne: req.body.addressOne,
-			addressTwo: req.body.addressTwo,
-			city: req.body.city,
-			state: req.body.state,
-			zip: req.body.zip,
-			deliveryDate: req.body.deliveryDate,
-			totalCost: req.body.totalCost
-		},
-		{
-			upsert: true
-		},
-		function (err, doc){
+		}, function(err, doc){
 			if (err){
 				res.json({ failure: 'notUpdated' });
 			} else {
-				// found a document and updated it or created one
-				// now save the document in the database
-				doc.save();
-				res.json({ success: 'updated' });
+				res.json({ success: 'removed' });
 			}
 	});
 });

@@ -6,9 +6,9 @@ var Account = require('../models/accounts');
 var Order = require('../models/orders');
 var bcrypt = require('bcrypt-nodejs');
 var randtoken = require('rand-token');
-var stripe = require("stripe")(
-  "pk_test_S1PLtt6vW1RchhitC9359CNc"
-);
+// var stripe = require("stripe")(
+//   "pk_test_S1PLtt6vW1RchhitC9359CNc"
+// );
 mongoose.connect(mongoUrl);
 
 
@@ -68,19 +68,31 @@ router.post('/login', function(req, res, next){
 	Account.findOne(
 		{ username: req.body.username },
 		function (err, doc){
-			if(doc == null){
+			if (doc == null){
+				// make sure the username is in the database
 				res.json({ failure: 'noUser'});
 			} else {
+				// generate a new token for the current session
+				var newToken = randtoken.generate(32);
+
 				// doc is the document returned from our Mongo query; it has a property for each field.
 				// check the password in the db (doc.password) against the submitted password
 				var loginResult = bcrypt.compareSync(req.body.password, doc.password);
-				if(loginResult){
-					// hashes matched
-					res.json({
-						success: 'match',
-						token: doc.token
+				if (loginResult){
+					// password hashes matched, update the token in the db and send it back
+					Account.findOneAndUpdate(
+						{
+							username: req.body.username },
+						{
+							$set: { token: newToken }
+						},
+						function (err2, doc2){
+							res.json({
+								success: 'match',
+								token: newToken
+							});
 					});
-				}else{
+				} else{
 					// hashes did not match or doc not found
 					res.json({ failure: 'noMatch' });
 				}
@@ -127,8 +139,6 @@ router.post('/delivery', function(req, res, next){
 
 router.post('/payment', function(req, res, next){
 	
-	// stripe requires HTTPS so we're going to use some dummy code for now
-
 	// stripe.charges.create({
 	// 	amount: req.body.stripeAmount, // obtained with hidden input field
 	// 	currency: 'usd',
@@ -141,6 +151,8 @@ router.post('/payment', function(req, res, next){
  	// 		res.json({success: 'paid'});
  	// 		}
 	// });
+
+	// stripe requires HTTPS for the payment page, so we're going to use some dummy code for now
 	
 	Account.findOne(
 		{
